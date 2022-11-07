@@ -240,4 +240,242 @@ alert(user.name);*/
 }*/
 
 //ЗАДАЧА 21
-console.log("test");
+/*let calculator = {
+    read(){
+        this.x = +prompt("Please, enter x");
+        this.y = +prompt("Please, enter y");
+    },
+
+    sum(){
+        return this.x + this.y;
+    },
+
+    mul(){
+        return this.x * this.y;
+    },
+}
+
+calculator.read();
+alert( calculator.sum() );
+alert( calculator.mul() );*/
+
+//ЗАДАЧА 22
+/*let ladder = {
+    step: 0,
+
+    up() {
+        this.step++;
+        return this;
+    },
+
+    down() {
+        this.step--;
+        return this;
+    },
+
+    showStep() {
+        alert(this.step);
+        return this;
+    },
+}
+
+ladder.up().up().showStep().down().down().up().showStep();*/
+
+//LESSON new
+/*function User(name) {
+    this.name = name;
+    this.isAdmin = false;
+}
+
+let user = new User("Jack");
+
+alert(user.name);
+alert(user.isAdmin);*/
+
+//TASK 23
+/*function Calculator(){
+    this.read = function() {
+        this.x = +prompt("x = ");
+        this.y = +prompt("y = ");
+    }
+
+    this.sum = function() {
+        return this.x + this.y;
+    }
+
+    this.mul = function() {
+        return this.x * this.y;
+    }
+}
+
+let calc = new Calculator();
+calc.read();
+alert( calc.sum() );
+alert( calc.mul() );*/
+
+//TASK 24
+/*function Accumulator(startingValue) {
+    this.value = startingValue;
+
+    this.read = function() {
+        this.value += +prompt("Enter your value");
+    }
+}
+
+let accum = new Accumulator(1);
+accum.read();
+accum.read();
+alert(accum.value);*/
+
+//TASK 25
+/*function sum(){
+    let a = +prompt("Enter a");
+    let b = +prompt("Enter b");
+    alert(a + b);
+}*/
+
+//TASK 26
+/*function readNum(){
+    let a;
+
+    do {
+        a = prompt("enter a");
+    } while (!isFinite(a));
+
+    if (a === null || a === ""){
+        return null;
+    }
+    
+    return +a;
+}
+
+alert( `your num is ${readNum()}`);*/
+
+//TASK 27
+/*function randomNum(min, max){
+    return min + Math.random() * (max - min);
+}
+
+alert (randomNum(1,5));*/
+
+//TASK 28
+/*function randomInt(min, max){
+    let randInt = min + Math.random() * (max + 1 - min);
+    return Math.floor(randInt);
+}
+
+alert( randomInt(1,5) );*/
+
+//TASK 29
+/*function ucFirst(str){
+    if (!str){
+        return str;
+    }
+
+    return str = str[0].toUpperCase() + str.slice(1);
+}
+
+alert( ucFirst("hello") );*/
+
+//TASK 30
+/*function checkSpam(str){
+    str = str.toLowerCase();
+
+    return str.includes("viagra") || str.includes("xxx");
+}
+
+alert( checkSpam("viAgRa grinsdnfjs gkfkg") );
+alert( checkSpam("xXx sdfs") );
+alert( checkSpam("sgdhgfdnf") );*/
+
+//TASK 31
+/*function truncate(str, maxLength){    
+    if (str.length > maxLength){
+        return str.slice(0, maxLength) + "...";
+    }
+
+    return str;
+}
+
+alert( truncate("I want to learn js, TS, angular, and apply for a job after that", 33) );
+alert( truncate("Hi", 20) );*/
+
+//TASK 32
+/*function getCurrentValue(str){
+    str = str.slice(1);
+    return +str;
+}
+
+alert( getCurrentValue("$450.5") );*/
+
+//TASK 33
+/*let styles = ["Jazz", "Blues"];
+alert(styles);
+styles.push("R&R");
+alert(styles);
+styles[Math.floor((styles.length - 1)/2)] = "Classic";
+alert(styles);
+alert( styles.shift() );
+styles.unshift("Reggy", "Rap");
+alert(styles);*/
+
+//TASK 34
+/*function sumInput(){
+    let arr = [];
+    let value;
+    let sum = 0;
+
+    do{
+        value = prompt("Enter your num");
+
+        if (!isFinite(value) || value === "" || value === null){
+            break;
+        }
+
+        arr.push(+value);
+    } while (true)
+
+    for (let num of arr){
+        sum += num;
+    }
+
+    return sum;
+}
+
+alert( sumInput() );*/
+
+//TASK 35
+function getMaxSubstringSum(arr){
+    let maxSum = 0;
+
+    for (let i = 0; i < arr.length; i++){
+        let tempSum = 0;
+
+        for (let j = i; j < arr.length; j++){
+            tempSum += arr[j];
+            maxSum = Math.max(maxSum, tempSum)
+        }
+    }
+
+    return maxSum;
+}
+
+function getMaxSubstringSumVer2(arr){   //Переписал решение из учебника, решил первым способом
+    let maxSum = 0;
+    let tempSum = 0;
+
+    for (let num of arr){
+        tempSum += num;
+        maxSum = Math.max(maxSum, tempSum);
+        
+        if (tempSum < 0){
+            tempSum = 0;
+        }
+    }
+
+    return maxSum;
+}
+
+let arr = [-1, 2, 5, 14, -9];
+alert( getMaxSubstringSum(arr) );
+alert( getMaxSubstringSumVer2(arr) );
